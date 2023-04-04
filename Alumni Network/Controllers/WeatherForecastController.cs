@@ -18,6 +18,10 @@ namespace Alumni_Network.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Dummy request for testing
+        /// </summary>
+        /// <returns></returns>
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
