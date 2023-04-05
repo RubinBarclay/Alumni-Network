@@ -15,5 +15,6 @@ namespace Alumni_Network.Models
         public string Bio { get; set; }
         [Required, MaxLength(250)]
         public string FunFact { get; set; }
+        public ICollection<Group> Groups { get; set; }
     }
 }
