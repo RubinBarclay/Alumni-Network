@@ -1,5 +1,7 @@
 using Alumni_Network.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
 
 // Services
@@ -26,15 +28,37 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 // CORS policy
-var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+var MyAllowSpecificOrigins = builder.Configuration["JWT:policy"];
 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: MyAllowSpecificOrigins, policy =>
     {
-        policy.WithOrigins("http://localhost:3000");
+        policy.WithOrigins(builder.Configuration["JWT:cors"]).AllowAnyHeader().AllowAnyMethod();
     });
 });
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(opt =>
+    {
+        opt.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidAudience = builder.Configuration["JWT:audience"],
+            ValidIssuer = builder.Configuration["JWT:issuer"],
+            IssuerSigningKeyResolver = (token, securityToken, kid, parameters) =>
+            {
+                var client = new HttpClient();
+                var keyuri = builder.Configuration["JWT:key-uri"];
+                var response = client.GetAsync(keyuri).Result;
+                var responseString = response.Content.ReadAsStringAsync().Result;
+                var keys = new JsonWebKeySet(responseString);
+                return keys.Keys;
+            }
+
+        };
+    });
 
 // Middleware
 
@@ -50,6 +74,8 @@ if (app.Environment.IsDevelopment())
 app.UseCors(MyAllowSpecificOrigins);
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

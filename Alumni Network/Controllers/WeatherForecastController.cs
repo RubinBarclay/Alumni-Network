@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Alumni_Network.Controllers
@@ -22,6 +23,7 @@ namespace Alumni_Network.Controllers
         /// Dummy request for testing
         /// </summary>
         /// <returns></returns>
+        [Authorize(Roles = "ADMIN")]
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
