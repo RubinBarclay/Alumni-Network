@@ -1,4 +1,4 @@
-﻿namespace Alumni_Network.Models
+﻿namespace Alumni_Network.Models.Domain
 {
     public class BaseEntity
     {

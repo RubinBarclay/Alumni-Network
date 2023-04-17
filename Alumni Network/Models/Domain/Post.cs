@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Alumni_Network.Models
+namespace Alumni_Network.Models.Domain
 {
     public class Post : BaseEntity
     {

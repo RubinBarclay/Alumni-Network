@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Alumni_Network.Models.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace Alumni_Network.Models
 {
