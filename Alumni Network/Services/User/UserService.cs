@@ -1,17 +1,15 @@
-﻿using Alumni_Network.Models.DTOs.User;
+﻿using Alumni_Network.Models;
+using Alumni_Network.Models.DTOs.User;
 
 namespace Alumni_Network.Services.User
 {
     public class UserService : IUserService
     {
-        public Task<CreateUserDTO> CreateUserAsync()
-        {
-            throw new NotImplementedException();
-        }
+        private readonly AlumniDbContext _context;
 
-        public Task<EditUserDTO> EditUserAsync()
+        public UserService(AlumniDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
 
         public Task<GetUserDTO> GetUserAsync()
@@ -23,5 +21,16 @@ namespace Alumni_Network.Services.User
         {
             throw new NotImplementedException();
         }
+
+        public Task<CreateUserDTO> CreateUserAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<EditUserDTO> EditUserAsync()
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

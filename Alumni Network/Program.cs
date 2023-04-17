@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
+using Alumni_Network.Services.User;
 
 // Services
 
@@ -26,6 +27,9 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new() { Title = "Alumni Network", Version = "v1" });
     c.IncludeXmlComments(xmlPath);
 });
+
+// Register services
+builder.Services.AddTransient<IUserService, UserService>();
 
 // CORS policy
 var MyAllowSpecificOrigins = builder.Configuration["JWT:policy"];
