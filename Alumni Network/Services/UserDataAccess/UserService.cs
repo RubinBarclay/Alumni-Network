@@ -1,6 +1,7 @@
 ﻿using Alumni_Network.Exceptions;
 using Alumni_Network.Models;
 using Alumni_Network.Models.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace Alumni_Network.Services.UserDataAccess
 {
@@ -35,9 +36,23 @@ namespace Alumni_Network.Services.UserDataAccess
             return user;
         }
 
-        public Task<User> CreateUserAsync()
+        public async Task CreateUserAsync(User user, string sub)
         {
-            throw new NotImplementedException();
+            if (_context.Users == null)
+            {
+                throw new UsersNotFound();
+            }
+
+            var userExists = await _context.Users.SingleOrDefaultAsync(u => u.Sub == sub);
+
+            if (userExists != null)
+            {
+                throw new UserAlreadyExists(sub);
+            }
+
+            _context.Users.Add(user);
+
+            await _context.SaveChangesAsync();
         }
 
         public Task<User> EditUserAsync()

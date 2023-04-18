@@ -28,6 +28,9 @@ builder.Services.AddSwaggerGen(c =>
     c.IncludeXmlComments(xmlPath);
 });
 
+// Lowecase URLs for routes
+builder.Services.Configure<RouteOptions>(options => options.LowercaseUrls = true);
+
 // Add AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

@@ -9,6 +9,7 @@ namespace Alumni_Network.Profiles
         public UserProfile()
         {
             CreateMap<User, GetUserByIdDTO>();
+            CreateMap<CreateUserDTO, User>();
         }
     }
 }

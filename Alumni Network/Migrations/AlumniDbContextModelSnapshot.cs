@@ -22,7 +22,7 @@ namespace Alumni_Network.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Alumni_Network.Models.Group", b =>
+            modelBuilder.Entity("Alumni_Network.Models.Domain.Group", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -33,7 +33,7 @@ namespace Alumni_Network.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 4, 6, 12, 39, 50, 79, DateTimeKind.Local).AddTicks(791));
+                        .HasDefaultValue(new DateTime(2023, 4, 18, 14, 49, 36, 796, DateTimeKind.Local).AddTicks(7174));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -51,7 +51,7 @@ namespace Alumni_Network.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 4, 6, 12, 39, 50, 79, DateTimeKind.Local).AddTicks(992));
+                        .HasDefaultValue(new DateTime(2023, 4, 18, 14, 49, 36, 796, DateTimeKind.Local).AddTicks(7466));
 
                     b.HasKey("Id");
 
@@ -150,7 +150,7 @@ namespace Alumni_Network.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Alumni_Network.Models.Post", b =>
+            modelBuilder.Entity("Alumni_Network.Models.Domain.Post", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -169,7 +169,7 @@ namespace Alumni_Network.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 4, 6, 12, 39, 50, 79, DateTimeKind.Local).AddTicks(297));
+                        .HasDefaultValue(new DateTime(2023, 4, 18, 14, 49, 36, 796, DateTimeKind.Local).AddTicks(6575));
 
                     b.Property<int?>("ReplyParentId")
                         .HasColumnType("int");
@@ -185,7 +185,7 @@ namespace Alumni_Network.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 4, 6, 12, 39, 50, 79, DateTimeKind.Local).AddTicks(562));
+                        .HasDefaultValue(new DateTime(2023, 4, 18, 14, 49, 36, 796, DateTimeKind.Local).AddTicks(6890));
 
                     b.HasKey("Id");
 
@@ -388,7 +388,7 @@ namespace Alumni_Network.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Alumni_Network.Models.User", b =>
+            modelBuilder.Entity("Alumni_Network.Models.Domain.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -403,7 +403,7 @@ namespace Alumni_Network.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 4, 6, 12, 39, 50, 78, DateTimeKind.Local).AddTicks(9672));
+                        .HasDefaultValue(new DateTime(2023, 4, 18, 14, 49, 36, 796, DateTimeKind.Local).AddTicks(5894));
 
                     b.Property<string>("FunFact")
                         .HasMaxLength(250)
@@ -421,10 +421,14 @@ namespace Alumni_Network.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
+                    b.Property<string>("Sub")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 4, 6, 12, 39, 50, 79, DateTimeKind.Local).AddTicks(95));
+                        .HasDefaultValue(new DateTime(2023, 4, 18, 14, 49, 36, 796, DateTimeKind.Local).AddTicks(6353));
 
                     b.HasKey("Id");
 
@@ -440,6 +444,7 @@ namespace Alumni_Network.Migrations
                             Name = "John Doe",
                             PictureUrl = "https://randomuser.me/api/portraits/men/67.jpg",
                             Status = "Comp sci student at the University of Washington",
+                            Sub = "df9ea233-b53d-4e1b-b155-258bbe7df862",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -451,6 +456,7 @@ namespace Alumni_Network.Migrations
                             Name = "Peter Olsson",
                             PictureUrl = "https://randomuser.me/api/portraits/men/0.jpg",
                             Status = "Learing how to analyze the mind",
+                            Sub = "9d1278a9-05ed-4dc9-8a1f-ad4e1105c10b",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -462,6 +468,7 @@ namespace Alumni_Network.Migrations
                             Name = "Jane Federstone",
                             PictureUrl = "https://randomuser.me/api/portraits/women/27.jpg",
                             Status = "Newly grad from the University of Ohio",
+                            Sub = "63d13f5d-8aa6-467e-986e-450f6e716f64",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -471,6 +478,7 @@ namespace Alumni_Network.Migrations
                             FunFact = "I secretely LOVE history hehe",
                             Name = "Axel Schwarzbergen",
                             Status = "Slowly becoming a professional MD",
+                            Sub = "827614eb-c54e-43ae-a637-27eb70e385a8",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -479,6 +487,7 @@ namespace Alumni_Network.Migrations
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Sara Svensson",
                             Status = "Interning as a nurse at the Reykjavik University Hospital",
+                            Sub = "48ae61f5-5dc8-4058-85b6-887ac20e5b03",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -489,6 +498,7 @@ namespace Alumni_Network.Migrations
                             Name = "Harry McPottson",
                             PictureUrl = "https://randomuser.me/api/portraits/men/80.jpg",
                             Status = "Studying magic at Hogwarts",
+                            Sub = "c0a72b96-f65c-473e-8ff1-f89b1097a937",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -498,6 +508,7 @@ namespace Alumni_Network.Migrations
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Alice Watson",
                             PictureUrl = "https://randomuser.me/api/portraits/women/72.jpg",
+                            Sub = "59207104-f1e4-4338-a507-bb217d223fbd",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -508,6 +519,7 @@ namespace Alumni_Network.Migrations
                             Name = "Jason Bilgums",
                             PictureUrl = "https://randomuser.me/api/portraits/men/89.jpg",
                             Status = "Looking for something to do with a economics degree",
+                            Sub = "a0d48da1-29c5-4a03-9755-897fa2908da6",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -517,6 +529,7 @@ namespace Alumni_Network.Migrations
                             Name = "Sally Parker",
                             PictureUrl = "https://randomuser.me/api/portraits/women/50.jpg",
                             Status = "Thinking very hard about something...",
+                            Sub = "67de4545-3904-4f6d-ad22-abff0fc51fc8",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -528,6 +541,7 @@ namespace Alumni_Network.Migrations
                             Name = "Jeffrey Thompson",
                             PictureUrl = "https://randomuser.me/api/portraits/men/3.jpg",
                             Status = "Programming my own trading bot",
+                            Sub = "6c7fe842-2a02-4e03-88da-1892b91a797c",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -539,6 +553,7 @@ namespace Alumni_Network.Migrations
                             Name = "Lucy Kim",
                             PictureUrl = "https://randomuser.me/api/portraits/women/60.jpg",
                             Status = "Currently painting a masterpiece",
+                            Sub = "39f957a0-aecc-4fc3-9445-ecd93ad2e6e6",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -549,6 +564,7 @@ namespace Alumni_Network.Migrations
                             Name = "Muhammad Al-Salehi",
                             PictureUrl = "https://randomuser.me/api/portraits/men/53.jpg",
                             Status = "Working on my own number theorem",
+                            Sub = "01f8e89d-ee69-4279-bd22-4b0afd9e8060",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
@@ -645,19 +661,19 @@ namespace Alumni_Network.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Alumni_Network.Models.Post", b =>
+            modelBuilder.Entity("Alumni_Network.Models.Domain.Post", b =>
                 {
-                    b.HasOne("Alumni_Network.Models.User", "Author")
+                    b.HasOne("Alumni_Network.Models.Domain.User", "Author")
                         .WithMany("Posts")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Alumni_Network.Models.Post", "ReplyParent")
+                    b.HasOne("Alumni_Network.Models.Domain.Post", "ReplyParent")
                         .WithMany("Replies")
                         .HasForeignKey("ReplyParentId");
 
-                    b.HasOne("Alumni_Network.Models.Group", "TargetGroup")
+                    b.HasOne("Alumni_Network.Models.Domain.Group", "TargetGroup")
                         .WithMany()
                         .HasForeignKey("TargetGroupId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -672,25 +688,25 @@ namespace Alumni_Network.Migrations
 
             modelBuilder.Entity("GroupUser", b =>
                 {
-                    b.HasOne("Alumni_Network.Models.Group", null)
+                    b.HasOne("Alumni_Network.Models.Domain.Group", null)
                         .WithMany()
                         .HasForeignKey("GroupsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Alumni_Network.Models.User", null)
+                    b.HasOne("Alumni_Network.Models.Domain.User", null)
                         .WithMany()
                         .HasForeignKey("MembersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Alumni_Network.Models.Post", b =>
+            modelBuilder.Entity("Alumni_Network.Models.Domain.Post", b =>
                 {
                     b.Navigation("Replies");
                 });
 
-            modelBuilder.Entity("Alumni_Network.Models.User", b =>
+            modelBuilder.Entity("Alumni_Network.Models.Domain.User", b =>
                 {
                     b.Navigation("Posts");
                 });

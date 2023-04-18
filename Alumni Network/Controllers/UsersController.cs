@@ -10,6 +10,8 @@ using Alumni_Network.Models.Domain;
 using Alumni_Network.Models.DTOs.User;
 using AutoMapper;
 using Alumni_Network.Services.UserDataAccess;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace Alumni_Network.Controllers
 {
@@ -30,7 +32,7 @@ namespace Alumni_Network.Controllers
         //[HttpGet]
         //public async Task<ActionResult<User>> GetUser() { }
 
-        // GET: api/Users/5
+        // GET: api/users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<GetUserByIdDTO>> GetUserById(int id)
         {
@@ -70,20 +72,29 @@ namespace Alumni_Network.Controllers
         //    //return NoContent();
         //}
 
-        //// POST: api/Users
-        //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //[HttpPost]
-        //public async Task<ActionResult<User>> CreateUser(User user)
-        //{
-        //  //if (_context.Users == null)
-        //  //{
-        //  //    return Problem("Entity set 'AlumniDbContext.Users'  is null.");
-        //  //}
-        //  //  _context.Users.Add(user);
-        //  //  await _context.SaveChangesAsync();
+        // POST: api/Users
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        [Authorize]
+        public async Task<ActionResult<GetUserByIdDTO>> CreateUser(CreateUserDTO userDTO)
+        {
+            // Extract the user sub (keycloak id) from the token
+            var sub = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-        //  //  return CreatedAtAction("GetUser", new { id = user.Id }, user);
-        //}
+            if (sub == null)
+            {
+                return BadRequest("No sub claim found in token");
+            }
+
+            // Assign the sub (keycloak id) to the user DTO
+            userDTO.Sub = sub;
+
+            var user = _mapper.Map<User>(userDTO);
+
+            await _service.CreateUserAsync(user, sub);
+
+            return CreatedAtAction("CreateUser", new { id = user.Id }, user);
+        }
 
         //private bool UserExists(int id)
         //{

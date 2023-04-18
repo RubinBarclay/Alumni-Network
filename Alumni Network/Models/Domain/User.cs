@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.Identity.Client;
+using System.ComponentModel.DataAnnotations;
 
 namespace Alumni_Network.Models.Domain
 {
@@ -7,7 +8,10 @@ namespace Alumni_Network.Models.Domain
         public int Id { get; set; }
 
         [Required, MaxLength(50)]
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
+
+        [Required]
+        public string Sub { get; set; } = null!;
 
         [Url]
         public string? PictureUrl { get; set; }

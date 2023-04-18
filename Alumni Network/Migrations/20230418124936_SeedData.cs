@@ -18,7 +18,7 @@ namespace Alumni_Network.Migrations
                 table: "Users",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 4, 6, 12, 39, 50, 79, DateTimeKind.Local).AddTicks(95),
+                defaultValue: new DateTime(2023, 4, 18, 14, 49, 36, 796, DateTimeKind.Local).AddTicks(6353),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2");
 
@@ -27,16 +27,23 @@ namespace Alumni_Network.Migrations
                 table: "Users",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 4, 6, 12, 39, 50, 78, DateTimeKind.Local).AddTicks(9672),
+                defaultValue: new DateTime(2023, 4, 18, 14, 49, 36, 796, DateTimeKind.Local).AddTicks(5894),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2");
+
+            migrationBuilder.AddColumn<string>(
+                name: "Sub",
+                table: "Users",
+                type: "nvarchar(max)",
+                nullable: false,
+                defaultValue: "");
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedAt",
                 table: "Posts",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 4, 6, 12, 39, 50, 79, DateTimeKind.Local).AddTicks(562),
+                defaultValue: new DateTime(2023, 4, 18, 14, 49, 36, 796, DateTimeKind.Local).AddTicks(6890),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2");
 
@@ -45,7 +52,7 @@ namespace Alumni_Network.Migrations
                 table: "Posts",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 4, 6, 12, 39, 50, 79, DateTimeKind.Local).AddTicks(297),
+                defaultValue: new DateTime(2023, 4, 18, 14, 49, 36, 796, DateTimeKind.Local).AddTicks(6575),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2");
 
@@ -54,7 +61,7 @@ namespace Alumni_Network.Migrations
                 table: "Groups",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 4, 6, 12, 39, 50, 79, DateTimeKind.Local).AddTicks(992),
+                defaultValue: new DateTime(2023, 4, 18, 14, 49, 36, 796, DateTimeKind.Local).AddTicks(7466),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2");
 
@@ -63,7 +70,7 @@ namespace Alumni_Network.Migrations
                 table: "Groups",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 4, 6, 12, 39, 50, 79, DateTimeKind.Local).AddTicks(791),
+                defaultValue: new DateTime(2023, 4, 18, 14, 49, 36, 796, DateTimeKind.Local).AddTicks(7174),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2");
 
@@ -86,21 +93,21 @@ namespace Alumni_Network.Migrations
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "Bio", "FunFact", "Name", "PictureUrl", "Status" },
+                columns: new[] { "Id", "Bio", "FunFact", "Name", "PictureUrl", "Status", "Sub" },
                 values: new object[,]
                 {
-                    { 1, "I'm a student at the University of Washington.", "I can solve a rubik's cube in less than 12 seconds", "John Doe", "https://randomuser.me/api/portraits/men/67.jpg", "Comp sci student at the University of Washington" },
-                    { 2, "Aspiring psychologist currently studing at the Stockholm University.", "I like to eat cake in the shower", "Peter Olsson", "https://randomuser.me/api/portraits/men/0.jpg", "Learing how to analyze the mind" },
-                    { 3, "I'm a recent graduate from the University of Ohio.", "I'm a huge fan of the Seattle Seahawks (and psychology)", "Jane Federstone", "https://randomuser.me/api/portraits/women/27.jpg", "Newly grad from the University of Ohio" },
-                    { 4, null, "I secretely LOVE history hehe", "Axel Schwarzbergen", null, "Slowly becoming a professional MD" },
-                    { 5, null, null, "Sara Svensson", null, "Interning as a nurse at the Reykjavik University Hospital" },
-                    { 6, "Destined to save the world or whatever but right now I kinda just like studying and chilling with my boy Ron.", null, "Harry McPottson", "https://randomuser.me/api/portraits/men/80.jpg", "Studying magic at Hogwarts" },
-                    { 7, "Researcher by day and hardcore gamer by night. But most of the time i just sit and stare at cells through a microscope.", null, "Alice Watson", "https://randomuser.me/api/portraits/women/72.jpg", null },
-                    { 8, "Recent Harvard Economics graduate who wasted his 20's studying 16 hours a day.", null, "Jason Bilgums", "https://randomuser.me/api/portraits/men/89.jpg", "Looking for something to do with a economics degree" },
-                    { 9, null, null, "Sally Parker", "https://randomuser.me/api/portraits/women/50.jpg", "Thinking very hard about something..." },
-                    { 10, "I'm a nerdy programmer with a big interest in finance and getting rich.", "I made and $650 by selling my first app", "Jeffrey Thompson", "https://randomuser.me/api/portraits/men/3.jpg", "Programming my own trading bot" },
-                    { 11, "There is nothing I love more than zoning out and mindlessly drawing for hours on end.", "I paid off my student loans with weird art commissions", "Lucy Kim", "https://randomuser.me/api/portraits/women/60.jpg", "Currently painting a masterpiece" },
-                    { 12, "I've always problem solving and working on complicated problems. Hence I became a mathimatician.", null, "Muhammad Al-Salehi", "https://randomuser.me/api/portraits/men/53.jpg", "Working on my own number theorem" }
+                    { 1, "I'm a student at the University of Washington.", "I can solve a rubik's cube in less than 12 seconds", "John Doe", "https://randomuser.me/api/portraits/men/67.jpg", "Comp sci student at the University of Washington", "df9ea233-b53d-4e1b-b155-258bbe7df862" },
+                    { 2, "Aspiring psychologist currently studing at the Stockholm University.", "I like to eat cake in the shower", "Peter Olsson", "https://randomuser.me/api/portraits/men/0.jpg", "Learing how to analyze the mind", "9d1278a9-05ed-4dc9-8a1f-ad4e1105c10b" },
+                    { 3, "I'm a recent graduate from the University of Ohio.", "I'm a huge fan of the Seattle Seahawks (and psychology)", "Jane Federstone", "https://randomuser.me/api/portraits/women/27.jpg", "Newly grad from the University of Ohio", "63d13f5d-8aa6-467e-986e-450f6e716f64" },
+                    { 4, null, "I secretely LOVE history hehe", "Axel Schwarzbergen", null, "Slowly becoming a professional MD", "827614eb-c54e-43ae-a637-27eb70e385a8" },
+                    { 5, null, null, "Sara Svensson", null, "Interning as a nurse at the Reykjavik University Hospital", "48ae61f5-5dc8-4058-85b6-887ac20e5b03" },
+                    { 6, "Destined to save the world or whatever but right now I kinda just like studying and chilling with my boy Ron.", null, "Harry McPottson", "https://randomuser.me/api/portraits/men/80.jpg", "Studying magic at Hogwarts", "c0a72b96-f65c-473e-8ff1-f89b1097a937" },
+                    { 7, "Researcher by day and hardcore gamer by night. But most of the time i just sit and stare at cells through a microscope.", null, "Alice Watson", "https://randomuser.me/api/portraits/women/72.jpg", null, "59207104-f1e4-4338-a507-bb217d223fbd" },
+                    { 8, "Recent Harvard Economics graduate who wasted his 20's studying 16 hours a day.", null, "Jason Bilgums", "https://randomuser.me/api/portraits/men/89.jpg", "Looking for something to do with a economics degree", "a0d48da1-29c5-4a03-9755-897fa2908da6" },
+                    { 9, null, null, "Sally Parker", "https://randomuser.me/api/portraits/women/50.jpg", "Thinking very hard about something...", "67de4545-3904-4f6d-ad22-abff0fc51fc8" },
+                    { 10, "I'm a nerdy programmer with a big interest in finance and getting rich.", "I made and $650 by selling my first app", "Jeffrey Thompson", "https://randomuser.me/api/portraits/men/3.jpg", "Programming my own trading bot", "6c7fe842-2a02-4e03-88da-1892b91a797c" },
+                    { 11, "There is nothing I love more than zoning out and mindlessly drawing for hours on end.", "I paid off my student loans with weird art commissions", "Lucy Kim", "https://randomuser.me/api/portraits/women/60.jpg", "Currently painting a masterpiece", "39f957a0-aecc-4fc3-9445-ecd93ad2e6e6" },
+                    { 12, "I've always problem solving and working on complicated problems. Hence I became a mathimatician.", null, "Muhammad Al-Salehi", "https://randomuser.me/api/portraits/men/53.jpg", "Working on my own number theorem", "01f8e89d-ee69-4279-bd22-4b0afd9e8060" }
                 });
 
             migrationBuilder.InsertData(
@@ -429,6 +436,10 @@ namespace Alumni_Network.Migrations
                 keyColumn: "Id",
                 keyValue: 9);
 
+            migrationBuilder.DropColumn(
+                name: "Sub",
+                table: "Users");
+
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedAt",
                 table: "Users",
@@ -436,7 +447,7 @@ namespace Alumni_Network.Migrations
                 nullable: false,
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 4, 6, 12, 39, 50, 79, DateTimeKind.Local).AddTicks(95));
+                oldDefaultValue: new DateTime(2023, 4, 18, 14, 49, 36, 796, DateTimeKind.Local).AddTicks(6353));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedAt",
@@ -445,7 +456,7 @@ namespace Alumni_Network.Migrations
                 nullable: false,
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 4, 6, 12, 39, 50, 78, DateTimeKind.Local).AddTicks(9672));
+                oldDefaultValue: new DateTime(2023, 4, 18, 14, 49, 36, 796, DateTimeKind.Local).AddTicks(5894));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedAt",
@@ -454,7 +465,7 @@ namespace Alumni_Network.Migrations
                 nullable: false,
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 4, 6, 12, 39, 50, 79, DateTimeKind.Local).AddTicks(562));
+                oldDefaultValue: new DateTime(2023, 4, 18, 14, 49, 36, 796, DateTimeKind.Local).AddTicks(6890));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedAt",
@@ -463,7 +474,7 @@ namespace Alumni_Network.Migrations
                 nullable: false,
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 4, 6, 12, 39, 50, 79, DateTimeKind.Local).AddTicks(297));
+                oldDefaultValue: new DateTime(2023, 4, 18, 14, 49, 36, 796, DateTimeKind.Local).AddTicks(6575));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedAt",
@@ -472,7 +483,7 @@ namespace Alumni_Network.Migrations
                 nullable: false,
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 4, 6, 12, 39, 50, 79, DateTimeKind.Local).AddTicks(992));
+                oldDefaultValue: new DateTime(2023, 4, 18, 14, 49, 36, 796, DateTimeKind.Local).AddTicks(7466));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedAt",
@@ -481,7 +492,7 @@ namespace Alumni_Network.Migrations
                 nullable: false,
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 4, 6, 12, 39, 50, 79, DateTimeKind.Local).AddTicks(791));
+                oldDefaultValue: new DateTime(2023, 4, 18, 14, 49, 36, 796, DateTimeKind.Local).AddTicks(7174));
         }
     }
 }

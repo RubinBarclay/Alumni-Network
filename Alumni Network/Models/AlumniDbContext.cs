@@ -24,29 +24,29 @@ namespace Alumni_Network.Models
             modelBuilder.Entity<User>().HasData
             (
                 // Interests: Computer Science
-                new User { Id = 1, Name = "John Doe", PictureUrl = "https://randomuser.me/api/portraits/men/67.jpg", Status = "Comp sci student at the University of Washington", Bio = "I'm a student at the University of Washington.", FunFact = "I can solve a rubik's cube in less than 12 seconds" },
+                new User { Id = 1, Name = "John Doe", Sub = "df9ea233-b53d-4e1b-b155-258bbe7df862", PictureUrl = "https://randomuser.me/api/portraits/men/67.jpg", Status = "Comp sci student at the University of Washington", Bio = "I'm a student at the University of Washington.", FunFact = "I can solve a rubik's cube in less than 12 seconds" },
                 // Interests: Psychology
-                new User { Id = 2, Name = "Peter Olsson", PictureUrl = "https://randomuser.me/api/portraits/men/0.jpg", Status = "Learing how to analyze the mind", Bio = "Aspiring psychologist currently studing at the Stockholm University.", FunFact = "I like to eat cake in the shower" },
+                new User { Id = 2, Name = "Peter Olsson", Sub = "9d1278a9-05ed-4dc9-8a1f-ad4e1105c10b", PictureUrl = "https://randomuser.me/api/portraits/men/0.jpg", Status = "Learing how to analyze the mind", Bio = "Aspiring psychologist currently studing at the Stockholm University.", FunFact = "I like to eat cake in the shower" },
                 // Interests: Psychology
-                new User { Id = 3, Name = "Jane Federstone", PictureUrl = "https://randomuser.me/api/portraits/women/27.jpg", Status = "Newly grad from the University of Ohio", Bio = "I'm a recent graduate from the University of Ohio.", FunFact = "I'm a huge fan of the Seattle Seahawks (and psychology)" },
+                new User { Id = 3, Name = "Jane Federstone", Sub = "63d13f5d-8aa6-467e-986e-450f6e716f64", PictureUrl = "https://randomuser.me/api/portraits/women/27.jpg", Status = "Newly grad from the University of Ohio", Bio = "I'm a recent graduate from the University of Ohio.", FunFact = "I'm a huge fan of the Seattle Seahawks (and psychology)" },
                 // Interests: Medicine, History
-                new User { Id = 4, Name = "Axel Schwarzbergen", Status = "Slowly becoming a professional MD", FunFact = "I secretely LOVE history hehe" },
+                new User { Id = 4, Name = "Axel Schwarzbergen", Sub = "827614eb-c54e-43ae-a637-27eb70e385a8", Status = "Slowly becoming a professional MD", FunFact = "I secretely LOVE history hehe" },
                 // Interests: Medicine
-                new User { Id = 5, Name = "Sara Svensson", Status = "Interning as a nurse at the Reykjavik University Hospital" },
+                new User { Id = 5, Name = "Sara Svensson", Sub = "48ae61f5-5dc8-4058-85b6-887ac20e5b03", Status = "Interning as a nurse at the Reykjavik University Hospital" },
                 // Interests: Art, Other
-                new User { Id = 6, Name = "Harry McPottson", PictureUrl = "https://randomuser.me/api/portraits/men/80.jpg", Status = "Studying magic at Hogwarts", Bio = "Destined to save the world or whatever but right now I kinda just like studying and chilling with my boy Ron." },
+                new User { Id = 6, Name = "Harry McPottson", Sub = "c0a72b96-f65c-473e-8ff1-f89b1097a937", PictureUrl = "https://randomuser.me/api/portraits/men/80.jpg", Status = "Studying magic at Hogwarts", Bio = "Destined to save the world or whatever but right now I kinda just like studying and chilling with my boy Ron." },
                 // Interests: Biology
-                new User { Id = 7, Name = "Alice Watson", PictureUrl = "https://randomuser.me/api/portraits/women/72.jpg", Bio = "Researcher by day and hardcore gamer by night. But most of the time i just sit and stare at cells through a microscope." },
+                new User { Id = 7, Name = "Alice Watson", Sub = "59207104-f1e4-4338-a507-bb217d223fbd", PictureUrl = "https://randomuser.me/api/portraits/women/72.jpg", Bio = "Researcher by day and hardcore gamer by night. But most of the time i just sit and stare at cells through a microscope." },
                 // Interests: Economics
-                new User { Id = 8, Name = "Jason Bilgums", PictureUrl = "https://randomuser.me/api/portraits/men/89.jpg", Status = "Looking for something to do with a economics degree", Bio = "Recent Harvard Economics graduate who wasted his 20's studying 16 hours a day." },
+                new User { Id = 8, Name = "Jason Bilgums", Sub = "a0d48da1-29c5-4a03-9755-897fa2908da6", PictureUrl = "https://randomuser.me/api/portraits/men/89.jpg", Status = "Looking for something to do with a economics degree", Bio = "Recent Harvard Economics graduate who wasted his 20's studying 16 hours a day." },
                 // Interests: Philosophy
-                new User { Id = 9, Name = "Sally Parker", PictureUrl = "https://randomuser.me/api/portraits/women/50.jpg", Status = "Thinking very hard about something..." },
+                new User { Id = 9, Name = "Sally Parker", Sub = "67de4545-3904-4f6d-ad22-abff0fc51fc8", PictureUrl = "https://randomuser.me/api/portraits/women/50.jpg", Status = "Thinking very hard about something..." },
                 // Interests: Computer Science, Economics
-                new User { Id = 10, Name = "Jeffrey Thompson", PictureUrl = "https://randomuser.me/api/portraits/men/3.jpg", Status = "Programming my own trading bot", Bio = "I'm a nerdy programmer with a big interest in finance and getting rich.", FunFact = "I made and $650 by selling my first app" },
+                new User { Id = 10, Name = "Jeffrey Thompson", Sub = "6c7fe842-2a02-4e03-88da-1892b91a797c", PictureUrl = "https://randomuser.me/api/portraits/men/3.jpg", Status = "Programming my own trading bot", Bio = "I'm a nerdy programmer with a big interest in finance and getting rich.", FunFact = "I made and $650 by selling my first app" },
                 // Interests: Art
-                new User { Id = 11, Name = "Lucy Kim", PictureUrl = "https://randomuser.me/api/portraits/women/60.jpg", Status = "Currently painting a masterpiece", Bio = "There is nothing I love more than zoning out and mindlessly drawing for hours on end.", FunFact = "I paid off my student loans with weird art commissions" },
+                new User { Id = 11, Name = "Lucy Kim", Sub = "39f957a0-aecc-4fc3-9445-ecd93ad2e6e6", PictureUrl = "https://randomuser.me/api/portraits/women/60.jpg", Status = "Currently painting a masterpiece", Bio = "There is nothing I love more than zoning out and mindlessly drawing for hours on end.", FunFact = "I paid off my student loans with weird art commissions" },
                 // Interests: Mathematics
-                new User { Id = 12, Name = "Muhammad Al-Salehi", PictureUrl = "https://randomuser.me/api/portraits/men/53.jpg", Status = "Working on my own number theorem", Bio = "I've always problem solving and working on complicated problems. Hence I became a mathimatician." }
+                new User { Id = 12, Name = "Muhammad Al-Salehi", Sub = "01f8e89d-ee69-4279-bd22-4b0afd9e8060", PictureUrl = "https://randomuser.me/api/portraits/men/53.jpg", Status = "Working on my own number theorem", Bio = "I've always problem solving and working on complicated problems. Hence I became a mathimatician." }
             );
 
             // Seed data for Group
