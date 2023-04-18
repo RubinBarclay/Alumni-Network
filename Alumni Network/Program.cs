@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
-using Alumni_Network.Services.User;
+using Alumni_Network.Services.UserDataAccess;
 
 // Services
 
@@ -27,6 +27,9 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new() { Title = "Alumni Network", Version = "v1" });
     c.IncludeXmlComments(xmlPath);
 });
+
+// Add AutoMapper
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 // Register services
 builder.Services.AddTransient<IUserService, UserService>();

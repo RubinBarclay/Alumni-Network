@@ -7,7 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Alumni_Network.Models;
 using Alumni_Network.Models.Domain;
-using Alumni_Network.Services.User;
+using Alumni_Network.Models.DTOs.User;
+using AutoMapper;
+using Alumni_Network.Services.UserDataAccess;
 
 namespace Alumni_Network.Controllers
 {
@@ -16,33 +18,26 @@ namespace Alumni_Network.Controllers
     public class UsersController : ControllerBase
     {
         private readonly IUserService _service;
+        private readonly IMapper _mapper;
 
-        public UsersController(IUserService service)
+        public UsersController(IUserService service, IMapper mapper)
         {
             _service = service;
+            _mapper = mapper;
         }
 
         //// GET: api/Users
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<User>> GetUser(int id) { }
+        //[HttpGet]
+        //public async Task<ActionResult<User>> GetUser() { }
 
-        //// GET: api/Users/5
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<User>> GetUserById(int id)
-        //{
-        //    //if (_context.Users == null)
-        //    //{
-        //    //    return NotFound();
-        //    //}
-        //    //var user = await _context.Users.FindAsync(id);
-
-        //    //if (user == null)
-        //    //{
-        //    //    return NotFound();
-        //    //}
-
-        //    //return user;
-        //}
+        // GET: api/Users/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<GetUserByIdDTO>> GetUserById(int id)
+        {
+            var user = await _service.GetUserByIdAsync(id);
+            var userDTO = _mapper.Map<GetUserByIdDTO>(user);
+            return Ok(userDTO);
+        }
 
         //// PUT: api/Users/5
         //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
