@@ -8,17 +8,9 @@ namespace Alumni_Network.Profiles
     {
         public UserProfile()
         {
-            CreateMap<User, GetUserByIdDTO>();
+            CreateMap<User, GetUserDTO>();
             CreateMap<CreateUserDTO, User>();
             CreateMap<EditUserDTO, User>();
-                //.ForMember(
-                //    dest => dest.Id,
-                //    opt => opt.MapFrom(src => src.Id)
-                //)
-                //.ForMember(
-                //    dest => dest.Sub,
-                //    opt => opt.MapFrom(src => src.Sub)
-                //);
         }
     }
 }

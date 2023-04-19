@@ -28,16 +28,12 @@ namespace Alumni_Network.Controllers
             _mapper = mapper;
         }
 
-        //// GET: api/Users
-        //[HttpGet]
-        //public async Task<ActionResult<User>> GetUser() { }
-
         // GET: api/users/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<GetUserByIdDTO>> GetUserById(int id)
+        public async Task<ActionResult<GetUserDTO>> GetUser(int id)
         {
-            var user = await _service.GetUserByIdAsync(id);
-            var userDTO = _mapper.Map<GetUserByIdDTO>(user);
+            var user = await _service.GetUserAsync(id);
+            var userDTO = _mapper.Map<GetUserDTO>(user);
             return Ok(userDTO);
         }
 
@@ -45,7 +41,7 @@ namespace Alumni_Network.Controllers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<GetUserByIdDTO>> CreateUser(CreateUserDTO userDTO)
+        public async Task<ActionResult<GetUserDTO>> CreateUser(CreateUserDTO userDTO)
         {
             // Extract the user sub (keycloak id) from the token
             var sub = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -68,6 +64,7 @@ namespace Alumni_Network.Controllers
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> EditUser(int id, EditUserDTO userDTO)
         {
             var user = _mapper.Map<User>(userDTO);
