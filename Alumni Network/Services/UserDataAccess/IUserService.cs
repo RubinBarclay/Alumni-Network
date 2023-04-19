@@ -7,6 +7,6 @@ namespace Alumni_Network.Services.UserDataAccess
         public Task<User> GetUserAsync();
         public Task<User> GetUserByIdAsync(int id);
         public Task CreateUserAsync(User user, string sub);
-        public Task<User> EditUserAsync();
+        public Task EditUserAsync(int id, User user);
     }
 }

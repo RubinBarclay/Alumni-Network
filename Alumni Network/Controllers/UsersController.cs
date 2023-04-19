@@ -41,37 +41,6 @@ namespace Alumni_Network.Controllers
             return Ok(userDTO);
         }
 
-        //// PUT: api/Users/5
-        //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> EditUser(int id, User user)
-        //{
-        //    //if (id != user.Id)
-        //    //{
-        //    //    return BadRequest();
-        //    //}
-
-        //    //_context.Entry(user).State = EntityState.Modified;
-
-        //    //try
-        //    //{
-        //    //    await _context.SaveChangesAsync();
-        //    //}
-        //    //catch (DbUpdateConcurrencyException)
-        //    //{
-        //    //    if (!UserExists(id))
-        //    //    {
-        //    //        return NotFound();
-        //    //    }
-        //    //    else
-        //    //    {
-        //    //        throw;
-        //    //    }
-        //    //}
-
-        //    //return NoContent();
-        //}
-
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -96,9 +65,16 @@ namespace Alumni_Network.Controllers
             return CreatedAtAction("CreateUser", new { id = user.Id }, user);
         }
 
-        //private bool UserExists(int id)
-        //{
-        //    return (_context.Users?.Any(e => e.Id == id)).GetValueOrDefault();
-        //}
+        // PUT: api/Users/5
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPut("{id}")]
+        public async Task<IActionResult> EditUser(int id, EditUserDTO userDTO)
+        {
+            var user = _mapper.Map<User>(userDTO);
+
+            await _service.EditUserAsync(id, user);
+
+            return NoContent();
+        }
     }
 }

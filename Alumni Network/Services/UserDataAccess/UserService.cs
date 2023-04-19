@@ -55,9 +55,66 @@ namespace Alumni_Network.Services.UserDataAccess
             await _context.SaveChangesAsync();
         }
 
-        public Task<User> EditUserAsync()
+        public async Task<User> EditUserAsync(int id, User user)
         {
-            throw new NotImplementedException();
+            var existingUser = await GetUserByIdAsync(id);
+
+            if (existingUser == null)
+            {
+                throw new UserNotFound(id);
+            }
+
+            if (user.Name != null)
+            {
+                existingUser.Name = user.Name;
+            }
+
+            if (user.PictureUrl != null)
+            {
+                existingUser.PictureUrl = user.PictureUrl;
+            }
+
+            if (user.Status != null)
+            {
+                existingUser.Status = user.Status;
+            }
+
+            if (user.Bio != null)
+            {
+                existingUser.Bio = user.Bio;
+            }
+
+            if (user.FunFact != null)
+            {
+                existingUser.FunFact = user.FunFact;
+            }
+
+            await _context.SaveChangesAsync();
         }
+
+        //public async Task EditUserAsync(int id, User user)
+        //{
+
+        //    _context.Entry(user).State = EntityState.Modified;
+
+        //    try
+        //    {
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        var userExists = (_context.Users?.Any(e => e.Id == id)).GetValueOrDefault();
+
+        //        if (!userExists)
+        //        {
+        //            throw new UserNotFound(id);
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
+
+        //}
     }
 }
