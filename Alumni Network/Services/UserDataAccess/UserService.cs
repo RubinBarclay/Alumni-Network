@@ -55,7 +55,7 @@ namespace Alumni_Network.Services.UserDataAccess
             await _context.SaveChangesAsync();
         }
 
-        public async Task<User> EditUserAsync(int id, User user)
+        public async Task EditUserAsync(int id, User user)
         {
             var existingUser = await GetUserByIdAsync(id);
 
