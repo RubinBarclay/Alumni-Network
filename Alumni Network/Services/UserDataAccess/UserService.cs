@@ -2,6 +2,7 @@
 using Alumni_Network.Models;
 using Alumni_Network.Models.Domain;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace Alumni_Network.Services.UserDataAccess
 {
@@ -38,7 +39,7 @@ namespace Alumni_Network.Services.UserDataAccess
                 throw new UsersNotFound();
             }
 
-            var userExists = await _context.Users.SingleOrDefaultAsync(u => u.Sub == sub);
+            var userExists = _context.Users.FirstOrDefault(u => u.Sub == sub);
 
             if (userExists != null)
             {
@@ -83,6 +84,20 @@ namespace Alumni_Network.Services.UserDataAccess
             {
                 existingUser.FunFact = user.FunFact;
             }
+
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteUserAsync(int id)
+        {
+            var user = await GetUserAsync(id);
+
+            if (user == null)
+            {
+                throw new UserNotFound(id);
+            }
+
+            _context.Users.Remove(user);
 
             await _context.SaveChangesAsync();
         }

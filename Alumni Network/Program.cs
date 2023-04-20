@@ -38,13 +38,13 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddTransient<IUserService, UserService>();
 
 // CORS policy
-var MyAllowSpecificOrigins = builder.Configuration["JWT:policy"];
+var MyAllowSpecificOrigins = builder.Configuration["CORS:Policy"];
 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: MyAllowSpecificOrigins, policy =>
     {
-        policy.WithOrigins(builder.Configuration["JWT:cors"]).AllowAnyHeader().AllowAnyMethod();
+        policy.WithOrigins(builder.Configuration["CORS:Origins"]).AllowAnyHeader().AllowAnyMethod();
     });
 });
 

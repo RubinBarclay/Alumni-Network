@@ -12,6 +12,7 @@ using AutoMapper;
 using Alumni_Network.Services.UserDataAccess;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using Alumni_Network.Exceptions;
 
 namespace Alumni_Network.Controllers
 {
@@ -56,7 +57,17 @@ namespace Alumni_Network.Controllers
 
             var user = _mapper.Map<User>(userDTO);
 
-            await _service.CreateUserAsync(user, sub);
+            try
+            {
+                await _service.CreateUserAsync(user, sub);
+            }
+            catch (UserAlreadyExists ex) 
+            {
+                return Conflict(new ProblemDetails
+                {
+                    Detail = ex.Message
+                });
+            }
 
             return CreatedAtAction("CreateUser", new { id = user.Id }, user);
         }
@@ -71,6 +82,15 @@ namespace Alumni_Network.Controllers
 
             await _service.EditUserAsync(id, user);
 
+            return NoContent();
+        }
+
+        // DELETE: api/Users/5
+        [HttpDelete("{id}")]
+        [Authorize(Roles = "ADMIN")]
+        public async Task<IActionResult> DeleteUser(int id)
+        {
+            await _service.DeleteUserAsync(id);
             return NoContent();
         }
     }
