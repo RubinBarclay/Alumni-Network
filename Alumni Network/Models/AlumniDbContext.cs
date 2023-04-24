@@ -13,6 +13,9 @@ namespace Alumni_Network.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // Add unique index on Sub for the User entity to prevent duplicate users
+            modelBuilder.Entity<User>().HasIndex(u => u.Sub).IsUnique();
+
             // Configures the self referencing one-to-many relationship for Post
             modelBuilder.Entity<Post>()
                 .HasOne(e => e.ReplyParent)
