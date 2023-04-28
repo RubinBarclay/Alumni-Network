@@ -61,12 +61,11 @@ namespace Alumni_Network.Controllers
             {
                 await _service.CreateUserAsync(user, sub);
             }
-            catch (Exception ex) when (ex is UserAlreadyExists || ex is DbUpdateException)
+            catch (UserAlreadyExists ex)
             {
-                return Conflict(new ProblemDetails
-                {
-                    Detail = "A user with this ID already exists"
-                });
+                // User already has an account, return the user DTO along with a 200 status code
+                var existingUserDTO = _mapper.Map<GetUserDTO>(ex.User);
+                return Ok(existingUserDTO);
             }
 
             return CreatedAtAction("CreateUser", new { id = user.Id }, user);

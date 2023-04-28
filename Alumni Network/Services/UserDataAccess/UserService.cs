@@ -39,11 +39,11 @@ namespace Alumni_Network.Services.UserDataAccess
                 throw new UsersNotFound();
             }
 
-            var userExists = _context.Users.FirstOrDefault(u => u.Sub == sub);
+            var existingUser = _context.Users.FirstOrDefault(u => u.Sub == sub);
 
-            if (userExists != null)
+            if (existingUser != null)
             {
-                throw new UserAlreadyExists(sub);
+                throw new UserAlreadyExists(sub, existingUser);
             }
 
             _context.Users.Add(user);
