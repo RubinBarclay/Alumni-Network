@@ -2,6 +2,7 @@
 using Alumni_Network.Exceptions.UserExceptions;
 using Alumni_Network.Models;
 using Alumni_Network.Models.Domain;
+using Alumni_Network.Services.UserDataAccess;
 using Microsoft.EntityFrameworkCore;
 
 namespace Alumni_Network.Services.PostDataAccess
@@ -9,10 +10,12 @@ namespace Alumni_Network.Services.PostDataAccess
     public class PostService : IPostService
     {
         private readonly AlumniDbContext _context;
+        private readonly IUserService _userService;
 
-        public PostService(AlumniDbContext context)
+        public PostService(AlumniDbContext context, IUserService userService)
         {
             _context = context;
+            _userService = userService;
         }
 
         // For dedicated post pagae for THIS post
@@ -25,7 +28,7 @@ namespace Alumni_Network.Services.PostDataAccess
         // For feed on home page for specific user
         public async Task<IEnumerable<Post>> GetPostsAsync(string sub)
         {
-            var user = _context.Users.FirstOrDefault(u => u.Sub == sub);
+            var user = _userService.GetUserBySubAsync(sub);
 
             if (user == null)
             {

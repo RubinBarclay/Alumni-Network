@@ -33,7 +33,7 @@ namespace Alumni_Network.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<GetUserDTO>> GetUser(int id)
         {
-            var user = await _service.GetUserAsync(id);
+            var user = await _service.GetUserByIdAsync(id);
             var userDTO = _mapper.Map<GetUserDTO>(user);
             return Ok(userDTO);
         }

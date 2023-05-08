@@ -92,15 +92,16 @@ namespace Alumni_Network.Controllers
         //    return NoContent();
         //}
 
-        //// POST: api/Posts
-        //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        // POST: api/Posts
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         //[HttpPost]
-        //public async Task<ActionResult<Post>> PostPost(Post post)
+        //[Authorize]
+        //public async Task<ActionResult<GetPostDTO>> PostPost(Post post)
         //{
-        //  if (_context.Posts == null)
-        //  {
-        //      return Problem("Entity set 'AlumniDbContext.Posts'  is null.");
-        //  }
+        //    if (_context.Posts == null)
+        //    {
+        //        return Problem("Entity set 'AlumniDbContext.Posts'  is null.");
+        //    }
         //    _context.Posts.Add(post);
         //    await _context.SaveChangesAsync();
 

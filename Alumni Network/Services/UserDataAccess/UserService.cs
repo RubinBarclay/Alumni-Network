@@ -16,7 +16,7 @@ namespace Alumni_Network.Services.UserDataAccess
             _context = context;
         }
 
-        public async Task<User> GetUserAsync(int id)
+        public async Task<User> GetUserByIdAsync(int id)
         {
             if (_context.Users == null)
             {
@@ -33,6 +33,23 @@ namespace Alumni_Network.Services.UserDataAccess
             return user;
         }
 
+        public async Task<User> GetUserBySubAsync(string sub)
+        {
+            if (_context.Users == null)
+            {
+                throw new UsersNotFound();
+            }
+
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Sub == sub);
+
+            if (user == null)
+            {
+                throw new UserNotFound(sub);
+            }
+
+            return user;
+        }
+
         public async Task CreateUserAsync(User user, string sub)
         {
             if (_context.Users == null)
@@ -40,7 +57,7 @@ namespace Alumni_Network.Services.UserDataAccess
                 throw new UsersNotFound();
             }
 
-            var existingUser = _context.Users.FirstOrDefault(u => u.Sub == sub);
+            var existingUser = await GetUserBySubAsync(sub);
 
             if (existingUser != null)
             {
@@ -54,7 +71,7 @@ namespace Alumni_Network.Services.UserDataAccess
 
         public async Task EditUserAsync(int id, User user)
         {
-            var existingUser = await GetUserAsync(id);
+            var existingUser = await GetUserByIdAsync(id);
 
             if (existingUser == null)
             {
@@ -91,7 +108,7 @@ namespace Alumni_Network.Services.UserDataAccess
 
         public async Task DeleteUserAsync(int id)
         {
-            var user = await GetUserAsync(id);
+            var user = await GetUserByIdAsync(id);
 
             if (user == null)
             {
