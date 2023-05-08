@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Alumni_Network.Models;
-using Alumni_Network.Models.Domain;
-using Alumni_Network.Services.UserDataAccess;
 using AutoMapper;
+using Alumni_Network.Models.DTOs.PostDTOs;
+using Alumni_Network.Services.PostDataAccess;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Alumni_Network.Controllers
 {
@@ -16,10 +15,10 @@ namespace Alumni_Network.Controllers
     [ApiController]
     public class PostsController : ControllerBase
     {
-        private readonly IUserService _service;
+        private readonly IPostService _service;
         private readonly IMapper _mapper;
 
-        public PostsController(IUserService service, IMapper mapper)
+        public PostsController(IPostService service, IMapper mapper)
         {
             _service = service;
             _mapper = mapper;
@@ -27,13 +26,21 @@ namespace Alumni_Network.Controllers
 
         // GET: api/Posts
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Post>>> GetPosts()
-        {
-          if (_context.Posts == null)
-          {
-              return NotFound();
-          }
-            return await _context.Posts.ToListAsync();
+        [Authorize]
+        public async Task<ActionResult<IEnumerable<GetPostDTO>>> GetPosts()
+        {   
+            var sub = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (sub == null)
+            {
+                return BadRequest("No sub claim found in token");
+            }
+
+            var posts = await _service.GetPostsAsync(sub);
+
+            var postDTOs = _mapper.Map<IEnumerable<GetPostDTO>>(posts);
+
+            return Ok(postDTOs);
         }
 
         //// GET: api/Posts/5

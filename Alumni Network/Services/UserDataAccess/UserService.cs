@@ -1,4 +1,5 @@
 ﻿using Alumni_Network.Exceptions;
+using Alumni_Network.Exceptions.UserExceptions;
 using Alumni_Network.Models;
 using Alumni_Network.Models.Domain;
 using Microsoft.EntityFrameworkCore;

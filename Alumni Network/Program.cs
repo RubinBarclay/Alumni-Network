@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
 using Alumni_Network.Services.UserDataAccess;
+using Alumni_Network.Services.PostDataAccess;
 
 // Services
 
@@ -36,6 +37,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 // Register services
 builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IPostService, PostService>();
 
 // CORS policy
 var MyAllowSpecificOrigins = builder.Configuration["CORS:Policy"];

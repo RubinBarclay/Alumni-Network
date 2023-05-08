@@ -1,6 +1,6 @@
 ﻿using Alumni_Network.Models.Domain;
 
-namespace Alumni_Network.Exceptions
+namespace Alumni_Network.Exceptions.UserExceptions
 {
     public class UserAlreadyExists : Exception
     {

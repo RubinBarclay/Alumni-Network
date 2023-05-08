@@ -12,7 +12,7 @@ using AutoMapper;
 using Alumni_Network.Services.UserDataAccess;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
-using Alumni_Network.Exceptions;
+using Alumni_Network.Exceptions.UserExceptions;
 
 namespace Alumni_Network.Controllers
 {
