@@ -25,26 +25,6 @@ namespace Alumni_Network.Services.PostDataAccess
         //    throw new NotImplementedException();
         //}
 
-        // For feed on home page for specific user
-        public async Task<IEnumerable<Post>> GetPostsAsync(string sub)
-        {
-            var user = _userService.GetUserBySubAsync(sub);
-
-            if (user == null)
-            {
-                throw new UserNotFound(sub);
-            }
-
-            if (_context.Posts == null)
-            {
-                throw new PostsNotFound();
-            }
-
-            return await _context.Posts
-                .Where(p => p.TargetGroup.Members.Any(u => u.Id == user.Id))
-                .ToListAsync();
-        }
-
         // Same as GetPostAsync but with id
         public async Task<Post> GetPostByIdAsync(int id)
         {
@@ -61,7 +41,21 @@ namespace Alumni_Network.Services.PostDataAccess
             }
 
             return post;
-            //throw new NotImplementedException();
+        }
+
+        // For feed on home page for specific user
+        public async Task<IEnumerable<Post>> GetPostsAsync(string sub)
+        {
+            var user = await _userService.GetUserBySubAsync(sub);
+
+            if (_context.Posts == null)
+            {
+                throw new PostsNotFound();
+            }
+
+            return await _context.Posts
+                .Where(p => p.TargetGroup.Members.Any(u => u.Id == user.Id))
+                .ToListAsync();
         }
 
         // For user posts history feed on profile page

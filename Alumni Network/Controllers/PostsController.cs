@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Alumni_Network.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class PostsController : ControllerBase
     {
@@ -43,23 +43,14 @@ namespace Alumni_Network.Controllers
             return Ok(postDTOs);
         }
 
-        //// GET: api/Posts/5
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<Post>> GetPost(int id)
-        //{
-        //  if (_context.Posts == null)
-        //  {
-        //      return NotFound();
-        //  }
-        //    var post = await _context.Posts.FindAsync(id);
-
-        //    if (post == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return post;
-        //}
+        // GET: api/Posts/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<GetPostDTO>> GetPost(int id)
+        {
+            var post = await _service.GetPostByIdAsync(id);
+            var postDTO = _mapper.Map<GetPostDTO>(post);
+            return postDTO;
+        }
 
         //// PUT: api/Posts/5
         //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
