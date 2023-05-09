@@ -18,7 +18,7 @@ namespace Alumni_Network.Migrations
                 table: "Users",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 4, 21, 11, 59, 30, 784, DateTimeKind.Local).AddTicks(4452),
+                defaultValue: new DateTime(2023, 5, 9, 12, 17, 8, 100, DateTimeKind.Local).AddTicks(2930),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2");
 
@@ -27,7 +27,7 @@ namespace Alumni_Network.Migrations
                 table: "Users",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 4, 21, 11, 59, 30, 784, DateTimeKind.Local).AddTicks(4114),
+                defaultValue: new DateTime(2023, 5, 9, 12, 17, 8, 100, DateTimeKind.Local).AddTicks(2615),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2");
 
@@ -43,7 +43,7 @@ namespace Alumni_Network.Migrations
                 table: "Posts",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 4, 21, 11, 59, 30, 784, DateTimeKind.Local).AddTicks(5022),
+                defaultValue: new DateTime(2023, 5, 9, 12, 17, 8, 100, DateTimeKind.Local).AddTicks(3709),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2");
 
@@ -52,7 +52,7 @@ namespace Alumni_Network.Migrations
                 table: "Posts",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 4, 21, 11, 59, 30, 784, DateTimeKind.Local).AddTicks(4722),
+                defaultValue: new DateTime(2023, 5, 9, 12, 17, 8, 100, DateTimeKind.Local).AddTicks(3464),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2");
 
@@ -61,7 +61,7 @@ namespace Alumni_Network.Migrations
                 table: "Groups",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 4, 21, 11, 59, 30, 784, DateTimeKind.Local).AddTicks(5491),
+                defaultValue: new DateTime(2023, 5, 9, 12, 17, 8, 100, DateTimeKind.Local).AddTicks(4188),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2");
 
@@ -70,7 +70,7 @@ namespace Alumni_Network.Migrations
                 table: "Groups",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 4, 21, 11, 59, 30, 784, DateTimeKind.Local).AddTicks(5270),
+                defaultValue: new DateTime(2023, 5, 9, 12, 17, 8, 100, DateTimeKind.Local).AddTicks(3984),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2");
 
@@ -457,7 +457,7 @@ namespace Alumni_Network.Migrations
                 nullable: false,
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 4, 21, 11, 59, 30, 784, DateTimeKind.Local).AddTicks(4452));
+                oldDefaultValue: new DateTime(2023, 5, 9, 12, 17, 8, 100, DateTimeKind.Local).AddTicks(2930));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedAt",
@@ -466,7 +466,7 @@ namespace Alumni_Network.Migrations
                 nullable: false,
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 4, 21, 11, 59, 30, 784, DateTimeKind.Local).AddTicks(4114));
+                oldDefaultValue: new DateTime(2023, 5, 9, 12, 17, 8, 100, DateTimeKind.Local).AddTicks(2615));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedAt",
@@ -475,7 +475,7 @@ namespace Alumni_Network.Migrations
                 nullable: false,
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 4, 21, 11, 59, 30, 784, DateTimeKind.Local).AddTicks(5022));
+                oldDefaultValue: new DateTime(2023, 5, 9, 12, 17, 8, 100, DateTimeKind.Local).AddTicks(3709));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedAt",
@@ -484,7 +484,7 @@ namespace Alumni_Network.Migrations
                 nullable: false,
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 4, 21, 11, 59, 30, 784, DateTimeKind.Local).AddTicks(4722));
+                oldDefaultValue: new DateTime(2023, 5, 9, 12, 17, 8, 100, DateTimeKind.Local).AddTicks(3464));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedAt",
@@ -493,7 +493,7 @@ namespace Alumni_Network.Migrations
                 nullable: false,
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 4, 21, 11, 59, 30, 784, DateTimeKind.Local).AddTicks(5491));
+                oldDefaultValue: new DateTime(2023, 5, 9, 12, 17, 8, 100, DateTimeKind.Local).AddTicks(4188));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedAt",
@@ -502,7 +502,7 @@ namespace Alumni_Network.Migrations
                 nullable: false,
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 4, 21, 11, 59, 30, 784, DateTimeKind.Local).AddTicks(5270));
+                oldDefaultValue: new DateTime(2023, 5, 9, 12, 17, 8, 100, DateTimeKind.Local).AddTicks(3984));
         }
     }
 }

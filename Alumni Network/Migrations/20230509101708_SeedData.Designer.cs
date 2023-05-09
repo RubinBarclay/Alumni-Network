@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Alumni_Network.Migrations
 {
     [DbContext(typeof(AlumniDbContext))]
-    [Migration("20230421095930_SeedData")]
+    [Migration("20230509101708_SeedData")]
     partial class SeedData
     {
         /// <inheritdoc />
@@ -36,7 +36,7 @@ namespace Alumni_Network.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 4, 21, 11, 59, 30, 784, DateTimeKind.Local).AddTicks(5270));
+                        .HasDefaultValue(new DateTime(2023, 5, 9, 12, 17, 8, 100, DateTimeKind.Local).AddTicks(3984));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -54,7 +54,7 @@ namespace Alumni_Network.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 4, 21, 11, 59, 30, 784, DateTimeKind.Local).AddTicks(5491));
+                        .HasDefaultValue(new DateTime(2023, 5, 9, 12, 17, 8, 100, DateTimeKind.Local).AddTicks(4188));
 
                     b.HasKey("Id");
 
@@ -172,7 +172,7 @@ namespace Alumni_Network.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 4, 21, 11, 59, 30, 784, DateTimeKind.Local).AddTicks(4722));
+                        .HasDefaultValue(new DateTime(2023, 5, 9, 12, 17, 8, 100, DateTimeKind.Local).AddTicks(3464));
 
                     b.Property<int?>("ReplyParentId")
                         .HasColumnType("int");
@@ -188,7 +188,7 @@ namespace Alumni_Network.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 4, 21, 11, 59, 30, 784, DateTimeKind.Local).AddTicks(5022));
+                        .HasDefaultValue(new DateTime(2023, 5, 9, 12, 17, 8, 100, DateTimeKind.Local).AddTicks(3709));
 
                     b.HasKey("Id");
 
@@ -406,7 +406,7 @@ namespace Alumni_Network.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 4, 21, 11, 59, 30, 784, DateTimeKind.Local).AddTicks(4114));
+                        .HasDefaultValue(new DateTime(2023, 5, 9, 12, 17, 8, 100, DateTimeKind.Local).AddTicks(2615));
 
                     b.Property<string>("FunFact")
                         .HasMaxLength(250)
@@ -431,7 +431,7 @@ namespace Alumni_Network.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 4, 21, 11, 59, 30, 784, DateTimeKind.Local).AddTicks(4452));
+                        .HasDefaultValue(new DateTime(2023, 5, 9, 12, 17, 8, 100, DateTimeKind.Local).AddTicks(2930));
 
                     b.HasKey("Id");
 

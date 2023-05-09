@@ -10,8 +10,9 @@ namespace Alumni_Network.Profiles
         {
             CreateMap<Post, GetPostDTO>()
                 .ForMember(dest => dest.Replies,
-                opt => opt.MapFrom(replies => replies.Replies.Select(x => x.Id)));
-            //CreateMap<CreateUserDTO, User>();
+                opt => opt.MapFrom(post => post.Replies.Select(x => x.Id).ToList())); // Send list of IDs or actual reply strings?
+
+            CreateMap<CreatePostDTO, Post>();
             //CreateMap<EditUserDTO, User>();
         }
     }

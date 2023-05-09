@@ -18,10 +18,11 @@ namespace Alumni_Network.Models
 
             // Configures the self referencing one-to-many relationship for Post
             modelBuilder.Entity<Post>()
-                .HasOne(e => e.ReplyParent)
-                .WithMany(e => e.Replies)
-                .HasForeignKey(e => e.ReplyParentId)
-                .IsRequired(false);
+                .HasOne(p => p.ReplyParent)
+                .WithMany(p => p.Replies)
+                .HasForeignKey(p => p.ReplyParentId)
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.Restrict);
 
             // Seed data for User
             modelBuilder.Entity<User>().HasData

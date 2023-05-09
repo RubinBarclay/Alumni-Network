@@ -33,7 +33,7 @@ namespace Alumni_Network.Services.PostDataAccess
                 throw new PostsNotFound();
             }
 
-            var post = await _context.Posts.FindAsync(id);
+            var post = await _context.Posts.Include(x => x.Replies).FirstOrDefaultAsync(x => x.Id == id); //.FindAsync(id);
 
             if (post == null)
             {

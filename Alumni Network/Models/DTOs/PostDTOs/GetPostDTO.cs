@@ -18,7 +18,7 @@
         // HOW TO DO THIS?
         //public ICollection<Post> Replies { get; set; } = new List<Post>();
 
-        // Convert ICollection of replies to list objects reply ids
+        // Convert ICollection of replies to list of reply ids
         public List<int> Replies { get; set; } = new List<int>();
 
         public int TargetGroupId { get; set; }
