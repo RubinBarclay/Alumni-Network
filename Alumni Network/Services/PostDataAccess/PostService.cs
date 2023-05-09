@@ -2,6 +2,7 @@
 using Alumni_Network.Exceptions.UserExceptions;
 using Alumni_Network.Models;
 using Alumni_Network.Models.Domain;
+using Alumni_Network.Models.DTOs.PostDTOs;
 using Alumni_Network.Services.UserDataAccess;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,16 +11,14 @@ namespace Alumni_Network.Services.PostDataAccess
     public class PostService : IPostService
     {
         private readonly AlumniDbContext _context;
-        private readonly IUserService _userService;
 
-        public PostService(AlumniDbContext context, IUserService userService)
+        public PostService(AlumniDbContext context)
         {
             _context = context;
-            _userService = userService;
         }
 
         // For dedicated post pagae for THIS post
-        // DONT KNOW HOW TO DO THIS WITHOUT USER ID, MAYBE US SUB OR AUTHORID?
+        // DONT KNOW HOW TO DO THIS WITHOUT USER ID, MAYBE US SUB OR AUTHORID? PROBABLY SUB LIKE OTHER ENDPOINTS
         //public Task<Post> GetPostAsync()
         //{
         //    throw new NotImplementedException();
@@ -33,7 +32,7 @@ namespace Alumni_Network.Services.PostDataAccess
                 throw new PostsNotFound();
             }
 
-            var post = await _context.Posts.Include(x => x.Replies).FirstOrDefaultAsync(x => x.Id == id); //.FindAsync(id);
+            var post = await _context.Posts.Include(x => x.Replies).FirstOrDefaultAsync(x => x.Id == id);
 
             if (post == null)
             {
@@ -46,7 +45,7 @@ namespace Alumni_Network.Services.PostDataAccess
         // For feed on home page for specific user
         public async Task<IEnumerable<Post>> GetPostsAsync(string sub)
         {
-            var user = await _userService.GetUserBySubAsync(sub);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Sub == sub);
 
             if (_context.Posts == null)
             {
@@ -62,6 +61,24 @@ namespace Alumni_Network.Services.PostDataAccess
         public Task<IEnumerable<Post>> GetPostsByUserAsync(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<Post> CreatePostAsync(Post post, string sub)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Sub == sub);
+
+            if (user == null)
+            {
+                throw new UserNotFound(sub);
+            }
+
+            post.AuthorId = user.Id;
+
+            _context.Posts.Add(post);
+
+            await _context.SaveChangesAsync();
+
+            return post;
         }
     }
 }

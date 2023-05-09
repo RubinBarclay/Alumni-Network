@@ -8,6 +8,7 @@ using Alumni_Network.Models.DTOs.PostDTOs;
 using Alumni_Network.Services.PostDataAccess;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using Alumni_Network.Models.Domain;
 
 namespace Alumni_Network.Controllers
 {
@@ -85,19 +86,25 @@ namespace Alumni_Network.Controllers
 
         // POST: api/Posts
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //[HttpPost]
-        //[Authorize]
-        //public async Task<ActionResult<GetPostDTO>> PostPost(Post post)
-        //{
-        //    if (_context.Posts == null)
-        //    {
-        //        return Problem("Entity set 'AlumniDbContext.Posts'  is null.");
-        //    }
-        //    _context.Posts.Add(post);
-        //    await _context.SaveChangesAsync();
+        [HttpPost]
+        [Authorize]
+        public async Task<ActionResult<GetPostDTO>> CreatePost(CreatePostDTO postDTO)
+        {
+            var sub = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-        //    return CreatedAtAction("GetPost", new { id = post.Id }, post);
-        //}
+            if (sub == null)
+            {
+                return BadRequest("No sub claim found in token");
+            }
+
+            var post = _mapper.Map<Post>(postDTO);
+
+            var createdPost = await _service.CreatePostAsync(post, sub);
+
+            var createdPostDTO = _mapper.Map<GetPostDTO>(createdPost);
+
+            return CreatedAtAction("CreatePost", new { id = createdPostDTO.Id }, createdPostDTO);
+        }
 
         //// DELETE: api/Posts/5
         //[HttpDelete("{id}")]

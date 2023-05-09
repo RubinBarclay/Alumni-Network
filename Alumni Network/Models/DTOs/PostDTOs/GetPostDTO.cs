@@ -14,10 +14,6 @@
         // Self referencing one-to-many relationship with Post (to determine original post)
         public int? ReplyParentId { get; set; }
 
-        // Self-referencing one-to-many relationship with Post (for replies)
-        // HOW TO DO THIS?
-        //public ICollection<Post> Replies { get; set; } = new List<Post>();
-
         // Convert ICollection of replies to list of reply ids
         public List<int> Replies { get; set; } = new List<int>();
 

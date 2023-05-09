@@ -33,22 +33,22 @@ namespace Alumni_Network.Services.UserDataAccess
             return user;
         }
 
-        public async Task<User> GetUserBySubAsync(string sub)
-        {
-            if (_context.Users == null)
-            {
-                throw new UsersNotFound();
-            }
+        //public async Task<User> GetUserBySubAsync(string sub)
+        //{
+        //    if (_context.Users == null)
+        //    {
+        //        throw new UsersNotFound();
+        //    }
 
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Sub == sub);
+        //    var user = await _context.Users.FirstOrDefaultAsync(u => u.Sub == sub);
 
-            if (user == null)
-            {
-                throw new UserNotFound(sub);
-            }
+        //    if (user == null)
+        //    {
+        //        throw new UserNotFound(sub);
+        //    }
 
-            return user;
-        }
+        //    return user;
+        //}
 
         public async Task CreateUserAsync(User user, string sub)
         {
@@ -57,7 +57,7 @@ namespace Alumni_Network.Services.UserDataAccess
                 throw new UsersNotFound();
             }
 
-            var existingUser = await GetUserBySubAsync(sub);
+            var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.Sub == sub);
 
             if (existingUser != null)
             {
