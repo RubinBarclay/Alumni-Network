@@ -2,8 +2,6 @@
 using Alumni_Network.Exceptions.UserExceptions;
 using Alumni_Network.Models;
 using Alumni_Network.Models.Domain;
-using Alumni_Network.Models.DTOs.PostDTOs;
-using Alumni_Network.Services.UserDataAccess;
 using Microsoft.EntityFrameworkCore;
 
 namespace Alumni_Network.Services.PostDataAccess
@@ -79,6 +77,20 @@ namespace Alumni_Network.Services.PostDataAccess
             await _context.SaveChangesAsync();
 
             return post;
+        }
+
+        public async Task DeletePostAsync(int id)
+        {
+            var post = await _context.Posts.FindAsync(id);
+
+            if (post == null)
+            {
+                throw new PostNotFound(id);
+            }
+
+            _context.Posts.Remove(post);
+
+            await _context.SaveChangesAsync();
         }
     }
 }

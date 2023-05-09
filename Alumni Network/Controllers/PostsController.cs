@@ -106,25 +106,14 @@ namespace Alumni_Network.Controllers
             return CreatedAtAction("CreatePost", new { id = createdPostDTO.Id }, createdPostDTO);
         }
 
-        //// DELETE: api/Posts/5
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> DeletePost(int id)
-        //{
-        //    if (_context.Posts == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    var post = await _context.Posts.FindAsync(id);
-        //    if (post == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    _context.Posts.Remove(post);
-        //    await _context.SaveChangesAsync();
-
-        //    return NoContent();
-        //}
+        // DELETE: api/Posts/5
+        [HttpDelete("{id}")]
+        [Authorize]
+        public async Task<IActionResult> DeleteUser(int id)
+        {
+            await _service.DeletePostAsync(id);
+            return NoContent();
+        }
 
         //private bool PostExists(int id)
         //{
