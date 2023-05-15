@@ -103,6 +103,8 @@ namespace Alumni_Network.Services.UserDataAccess
                 existingUser.FunFact = user.FunFact;
             }
 
+            _context.Entry(existingUser).State = EntityState.Modified;
+
             await _context.SaveChangesAsync();
         }
 
