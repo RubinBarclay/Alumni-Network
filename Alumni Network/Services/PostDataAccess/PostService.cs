@@ -79,6 +79,30 @@ namespace Alumni_Network.Services.PostDataAccess
             return post;
         }
 
+        public async Task EditPostAsync(int id, Post post)
+        {
+            var existingPost = await _context.Posts.FindAsync(id);
+
+            if (existingPost == null)
+            {
+                throw new PostNotFound(id);
+            }
+
+            if (post.Title != null)
+            {
+                existingPost.Title = post.Title;
+            }
+
+            if (post.Body != null)
+            {
+                existingPost.Body = post.Body;
+            }
+
+            _context.Entry(existingPost).State = EntityState.Modified;
+
+            await _context.SaveChangesAsync();
+        }
+
         public async Task DeletePostAsync(int id)
         {
             var post = await _context.Posts.FindAsync(id);

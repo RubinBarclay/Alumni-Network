@@ -11,9 +11,8 @@ namespace Alumni_Network.Profiles
             CreateMap<Post, GetPostDTO>()
                 .ForMember(dest => dest.Replies,
                 opt => opt.MapFrom(post => post.Replies.Select(x => x.Id).ToList())); // Send list of IDs or actual reply strings?
-
             CreateMap<CreatePostDTO, Post>();
-            //CreateMap<EditUserDTO, User>();
+            CreateMap<EditPostDTO, Post>();
         }
     }
 }

@@ -49,40 +49,11 @@ namespace Alumni_Network.Controllers
         public async Task<ActionResult<GetPostDTO>> GetPost(int id)
         {
             var post = await _service.GetPostByIdAsync(id);
+
             var postDTO = _mapper.Map<GetPostDTO>(post);
+
             return postDTO;
         }
-
-        //// PUT: api/Posts/5
-        //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> PutPost(int id, Post post)
-        //{
-        //    if (id != post.Id)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    _context.Entry(post).State = EntityState.Modified;
-
-        //    try
-        //    {
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!PostExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return NoContent();
-        //}
 
         // POST: api/Posts
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -106,18 +77,27 @@ namespace Alumni_Network.Controllers
             return CreatedAtAction("CreatePost", new { id = createdPostDTO.Id }, createdPostDTO);
         }
 
+        // PUT: api/Posts/5
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPut("{id}")]
+        [Authorize]
+        public async Task<IActionResult> EditPost(int id, EditPostDTO postDTO)
+        {
+            var post = _mapper.Map<Post>(postDTO);
+
+            await _service.EditPostAsync(id, post);
+
+            return NoContent();
+        }
+
         // DELETE: api/Posts/5
         [HttpDelete("{id}")]
         [Authorize]
         public async Task<IActionResult> DeleteUser(int id)
         {
             await _service.DeletePostAsync(id);
+
             return NoContent();
         }
-
-        //private bool PostExists(int id)
-        //{
-        //    return (_context.Posts?.Any(e => e.Id == id)).GetValueOrDefault();
-        //}
     }
 }
